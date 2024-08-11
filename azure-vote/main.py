@@ -24,19 +24,19 @@ instrument_key = '09035501-0afa-417a-a356-1c9d361ad83e'
 
 # Logging
 logger = logging.getLogger(__name__)
-handler = AzureLogHandler(connection_string=f'InstrumentationKey={instrument_key}')
+handler = AzureLogHandler(connection_string=f'InstrumentationKey=09035501-0afa-417a-a356-1c9d361ad83e;IngestionEndpoint=https://eastus-8.in.applicationinsights.azure.com/;LiveEndpoint=https://eastus.livediagnostics.monitor.azure.com/;ApplicationId=7f811fd9-9131-422d-a128-a0f5f64e68f4')
 logger.addHandler(handler)
 logger.setLevel(logging.INFO)
 
 # Metrics
 exporter = metrics_exporter.new_metrics_exporter(
 enable_standard_metrics=True,
-connection_string=f'InstrumentationKey={instrument_key}')
+connection_string=f'InstrumentationKey=09035501-0afa-417a-a356-1c9d361ad83e;IngestionEndpoint=https://eastus-8.in.applicationinsights.azure.com/;LiveEndpoint=https://eastus.livediagnostics.monitor.azure.com/;ApplicationId=7f811fd9-9131-422d-a128-a0f5f64e68f4')
 
 # Tracing
 tracer = Tracer(
     exporter=AzureExporter(
-        connection_string=f'InstrumentationKey={instrument_key}'),
+        connection_string=f'InstrumentationKey=09035501-0afa-417a-a356-1c9d361ad83e;IngestionEndpoint=https://eastus-8.in.applicationinsights.azure.com/;LiveEndpoint=https://eastus.livediagnostics.monitor.azure.com/;ApplicationId=7f811fd9-9131-422d-a128-a0f5f64e68f4'),
     sampler=ProbabilitySampler(1.0),
 )
 
@@ -45,7 +45,7 @@ app = Flask(__name__)
 # Requests
 middleware = FlaskMiddleware(
     app,
-    exporter=AzureExporter(connection_string=f'InstrumentationKey={instrument_key}'),
+    exporter=AzureExporter(connection_string=f'InstrumentationKey=09035501-0afa-417a-a356-1c9d361ad83e;IngestionEndpoint=https://eastus-8.in.applicationinsights.azure.com/;LiveEndpoint=https://eastus.livediagnostics.monitor.azure.com/;ApplicationId=7f811fd9-9131-422d-a128-a0f5f64e68f4'),
     sampler=ProbabilitySampler(rate=1.0),
 )
 
