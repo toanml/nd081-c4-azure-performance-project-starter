@@ -20,7 +20,7 @@ from opencensus.tags import tag_map as tag_map_module
 from opencensus.trace.samplers import ProbabilitySampler
 from opencensus.trace.tracer import Tracer
 
-instrument_key = 'f6397d5a-8b9b-44ed-b761-e672c58b54df'
+instrument_key = '09035501-0afa-417a-a356-1c9d361ad83e'
 
 # Logging
 logger = logging.getLogger(__name__)
