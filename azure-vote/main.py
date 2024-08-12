@@ -21,22 +21,22 @@ from opencensus.trace.samplers import ProbabilitySampler
 from opencensus.trace.tracer import Tracer
 
 instrument_key = '09035501-0afa-417a-a356-1c9d361ad83e'
-
+cnn_string = 'InstrumentationKey=3f415813-ee43-4412-b26d-cbe340176205;IngestionEndpoint=https://westus-0.in.applicationinsights.azure.com/;LiveEndpoint=https://westus.livediagnostics.monitor.azure.com/;ApplicationId=2ac8b84d-d72b-4805-9c81-7d4fd41c65f8'
 # Logging
 logger = logging.getLogger(__name__)
-handler = AzureLogHandler(connection_string=f'InstrumentationKey=09035501-0afa-417a-a356-1c9d361ad83e;IngestionEndpoint=https://eastus-8.in.applicationinsights.azure.com/;LiveEndpoint=https://eastus.livediagnostics.monitor.azure.com/;ApplicationId=7f811fd9-9131-422d-a128-a0f5f64e68f4')
+handler = AzureLogHandler(connection_string=cnn_string)
 logger.addHandler(handler)
 logger.setLevel(logging.INFO)
 
 # Metrics
 exporter = metrics_exporter.new_metrics_exporter(
 enable_standard_metrics=True,
-connection_string=f'InstrumentationKey=09035501-0afa-417a-a356-1c9d361ad83e;IngestionEndpoint=https://eastus-8.in.applicationinsights.azure.com/;LiveEndpoint=https://eastus.livediagnostics.monitor.azure.com/;ApplicationId=7f811fd9-9131-422d-a128-a0f5f64e68f4')
+connection_string=cnn_string)
 
 # Tracing
 tracer = Tracer(
     exporter=AzureExporter(
-        connection_string=f'InstrumentationKey=09035501-0afa-417a-a356-1c9d361ad83e;IngestionEndpoint=https://eastus-8.in.applicationinsights.azure.com/;LiveEndpoint=https://eastus.livediagnostics.monitor.azure.com/;ApplicationId=7f811fd9-9131-422d-a128-a0f5f64e68f4'),
+        connection_string=cnn_string),
     sampler=ProbabilitySampler(1.0),
 )
 
@@ -45,7 +45,7 @@ app = Flask(__name__)
 # Requests
 middleware = FlaskMiddleware(
     app,
-    exporter=AzureExporter(connection_string=f'InstrumentationKey=09035501-0afa-417a-a356-1c9d361ad83e;IngestionEndpoint=https://eastus-8.in.applicationinsights.azure.com/;LiveEndpoint=https://eastus.livediagnostics.monitor.azure.com/;ApplicationId=7f811fd9-9131-422d-a128-a0f5f64e68f4'),
+    exporter=AzureExporter(connection_string=cnn_string),
     sampler=ProbabilitySampler(rate=1.0),
 )
 
