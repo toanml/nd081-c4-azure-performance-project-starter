@@ -1,4 +1,4 @@
-Flask==1.1.2
+Flask==2.2.2
 opencensus-ext-azure==1.0.4
 opencensus-ext-flask==0.7.3
 redis==3.5.3
@@ -6,3 +6,4 @@ opencensus==0.7.13
 opencensus-ext-logging==0.1.0
 itsdangerous==2.0.1
 werkzeug==2.0.3
+six==1.16.0
