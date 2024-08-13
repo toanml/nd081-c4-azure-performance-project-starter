@@ -20,8 +20,8 @@ from opencensus.tags import tag_map as tag_map_module
 from opencensus.trace.samplers import ProbabilitySampler
 from opencensus.trace.tracer import Tracer
 
-instrument_key = '09035501-0afa-417a-a356-1c9d361ad83e'
-cnn_string = 'InstrumentationKey=3f415813-ee43-4412-b26d-cbe340176205;IngestionEndpoint=https://westus-0.in.applicationinsights.azure.com/;LiveEndpoint=https://westus.livediagnostics.monitor.azure.com/;ApplicationId=2ac8b84d-d72b-4805-9c81-7d4fd41c65f8'
+instrument_key = 'e17a8aec-4287-4d42-a936-ec2ac4cd83f7'
+cnn_string = 'InstrumentationKey=e17a8aec-4287-4d42-a936-ec2ac4cd83f7;IngestionEndpoint=https://westus-0.in.applicationinsights.azure.com/;LiveEndpoint=https://westus.livediagnostics.monitor.azure.com/;ApplicationId=e3ce6c51-d09a-4c1b-9303-5423fcbc8669'
 # Logging
 logger = logging.getLogger(__name__)
 handler = AzureLogHandler(connection_string=cnn_string)
