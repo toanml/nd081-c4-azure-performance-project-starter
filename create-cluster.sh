@@ -2,14 +2,24 @@
 
 # Variables
 resourceGroup="acdnd-c4-project"
+location="westus"
 clusterName="udacity-cluster"
 
+echo "STEP 0 - Creating resource group $resourceGroup..."
+
+az group create \
+--name $resourceGroup \
+--location $location \
+--verbose
+
+echo "Resource group created: $resourceGroup"
+
 # Install aks cli
-echo "Installing AKS CLI"
+#echo "Installing AKS CLI"
 
-sudo az aks install-cli
+# sudo az aks install-cli
 
-echo "AKS CLI installed"
+# echo "AKS CLI installed"
 
 # Create AKS cluster
 echo "Step 1 - Creating AKS cluster $clusterName"
@@ -24,17 +34,17 @@ az aks create \
 --generate-ssh-keys
 
 # For Cloud Lab users
-az aks create \
---resource-group $resourceGroup \
---name $clusterName \
---node-count 1 \
---generate-ssh-keys
+# az aks create \
+# --resource-group $resourceGroup \
+# --name $clusterName \
+# --node-count 1 \
+# --generate-ssh-keys
 
 # For Cloud Lab users
 # This command will is a substitute for "--enable-addons monitoring" option in the "az aks create"
 # Use the log analytics workspace - Resource ID
 # For Cloud Lab users, go to the existing Log Analytics workspace --> Properties --> Resource ID. Copy it and use in the command below.
-az aks enable-addons -a monitoring -n $clusterName -g $resourceGroup --workspace-resource-id "/subscriptions/6c39f60b-2bb1-4e37-ad64-faaf30beaca4/resourcegroups/cloud-demo-153430/providers/microsoft.operationalinsights/workspaces/loganalytics-153430"
+az aks enable-addons -a monitoring -n $clusterName -g $resourceGroup --workspace-resource-id "/subscriptions/ddf7c6af-c061-48d1-ac2a-262b48bf5345/resourcegroups/cloud-demo/providers/microsoft.operationalinsights/workspaces/loganalytics-260534"
 
 echo "AKS cluster created: $clusterName"
 
