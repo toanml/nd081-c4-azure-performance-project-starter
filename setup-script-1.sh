@@ -6,7 +6,7 @@ location="westus"
 osType="Ubuntu2204"
 vmssName="udacity-vmss"
 adminName="udacityadmin"
-storageAccount="udacitydiag$RANDOM"
+storageAccount="udacitydiagmlt"
 bePoolName="$vmssName-bepool"
 lbName="$vmssName-lb"
 lbRule="$lbName-network-rule"
@@ -28,7 +28,7 @@ az group create \
 --location $location \
 --verbose
 
-echo "Resource group created: $resourceGroup"
+# echo "Resource group created: $resourceGroup"
 
 # Create Storage account
 echo "STEP 1 - Creating storage account $storageAccount"
